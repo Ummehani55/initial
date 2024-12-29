@@ -1,11 +1,13 @@
 *{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 nav{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
     padding: 8px;
     background-color: black;
@@ -35,12 +37,17 @@ li{
     text-decoration: none;
 
 }
-button{
-    padding: 5px;
-    margin: 5px;
-    margin-left: 50px;
-    text-transform: uppercase;
+button {
+    padding: 10px 20px;
     background-color: rgb(90, 175, 5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: rgb(70, 155, 5);
 }
 .second{
     background-color: #fff;
@@ -63,10 +70,33 @@ a{
     color: black;
     text-decoration: none;
 }
-a:focus{
-    color: black;
-    font-weight: bold;
+/* ul a:hover{
+    color: white;
+} */
+li a:hover{
+    color: #000;
 }
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .ul {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .bg_image {
+        width: 100%;
+        height: auto;
+    }
+}
+
 
 /* why us */
 .bg_image{
@@ -74,14 +104,16 @@ a:focus{
     background-image: url(../asset/panacloud-css-starting-point-main/bg2.png);
     background-image: url(../asset/panacloud-css-starting-point-main/bg3.png);
     background-repeat: no-repeat;
-    background-size: 90em;
+    background-size: cover;
     width: 1340px;
     height: 440px;
+    align-items: center;
+    
 } 
 h1{
     text-align: center;
     padding-top: 150px;
-    font-size: 60px;
+    font-size: 4rem;
     color: #fff;
     text-transform: uppercase;
 }  
@@ -136,6 +168,23 @@ span{
     min-width: 150px; /* Prevent the item from shrinking too small */
     max-width: 200px;
     padding-top: 10px;
+    transform: translateY(50px);  /* Initially translated to create the slide effect */
+    animation: fadeInUp 1s forwards;  /* Apply animation */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);  /* Start below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);  /* End at original position */
+    }
+}
+.advantage-item:hover {
+    transform: scale(1.05);  /* Slight scale on hover */
+    background-color: rgba(128, 128, 128, 0.2);  /* Change background color */
 }
 .advantage-item img{
     width: 100px;
@@ -150,6 +199,17 @@ span{
     color: #000;
     padding-top: 20px;
 }
+@media (max-width: 768px) {
+    .advantages {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .advantage-item {
+        width: 80%;  /* Adjust width for smaller screens */
+        margin-bottom: 20px;  /* Space between items */
+    }
+}
 
 /* about */
 .about{
@@ -162,7 +222,7 @@ span{
     margin-right: 60%;
     margin-left: 5em;
     font-size: medium;
-    
+    transition: margin 0.3s ease-in-out;
 }
 .b{
     padding: 10px 20px;
@@ -175,6 +235,11 @@ span{
     box-shadow: 2px 2px 2px rgba(255, 166, 0, 0.39);
     cursor: pointer;
     font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.b:hover{
+    background-color: rgba(255, 166, 0, 0.7);
+    transform: scale(1.1);
 }
 #bg_image2{
     background-image: url(../asset/panacloud-css-starting-point-main/Artboard.png);
@@ -184,6 +249,7 @@ span{
     margin-left: 40em;
     margin-top: -30em;
 }
+
 
 /* service */
 .services{
@@ -211,6 +277,11 @@ span{
     padding-top: 50px;
     padding-left: 10px;
     padding-right: 10px;
+    transition: transform 03.s ease, box-shadow 0.3s ease;
+}
+.service:hover{
+    transform: translate(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .service h3{
     color: black;
@@ -228,6 +299,10 @@ span{
 .service img{
     width: 80px;
     height: 80px;
+    transition: transform 0.3s ease;
+}
+.service:hover img{
+    transform: scale(1.1);
 }
 #read{
     margin-top: 14px;
@@ -238,6 +313,11 @@ span{
     text-transform: lowercase;
     text-decoration: underline;
     text-align: center;
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+.read:hover {
+    color: #fff; 
+    letter-spacing: 2px;
 }
 
 /* portfolio */
@@ -289,12 +369,14 @@ span{
 .pro{
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     text-transform: capitalize;
     font-weight: 500;
     font-size: medium;
     margin-top: 30px;
+    gap: 1em;
 }
 .process{
     color: rgba(128, 128, 128, 0.89);
@@ -303,6 +385,10 @@ span{
     min-width: 150px;
     max-width: 200px;
     padding-top: 10px;
+    transition: transform 0.3s ease;
+}
+.process:hover {
+    transform: scale(1.05);
 }
 .process p{
     color: #000;
@@ -331,12 +417,28 @@ section{
 }
 .form{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: orange;
 }
 
 /* review */
 /* people about us */
 .main{
     background-color: rgba(146, 144, 144, 0.233);
+    padding: 20px;
 }
 table{
     margin: 10px;
@@ -346,6 +448,7 @@ table{
     width: 150px;
     height: 150px;
     margin-top: 10px;
+    border-radius: 50%;
 }
 .person p{
     margin-left: 180px;
@@ -359,13 +462,17 @@ table{
 .skills{
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 40px;
     margin-top: 25px;
+    flex-wrap: wrap;
 }
 .lg{
     height: 125px;
     width: 125px;
-
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}.lg:hover {
+    transform: scale(1.1);
 }
 .step p{
     margin-left: 25px;
@@ -404,8 +511,6 @@ input{
 .contact img {
     width: 25px;
     height: 15px;
-    border-radius: 0px;
-    
 }
 .map {
     width: 100%;
@@ -413,12 +518,12 @@ input{
     justify-content: center;
     align-items: center;
     margin: 20px 0;
+    position: sticky;
 }
   
 .google-map-embed {
-    width: 1500px; /* Original width for larger screens */
-    height: 450px; /* Original height for larger screens */
-    border: 0;
+    width: 1500px;
+    height: 450px;
 }
 
 /* footer */
@@ -509,4 +614,192 @@ footer{
     height: 30px;
     width: 30px;
     margin-bottom: -33px;
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 1400px) {
+    /* .service {
+        width: 240px;
+        padding: 10px;
+    } */
+
+    .process {
+        width: 170px;
+    }
+
+    .new_project h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about p {
+        margin-left: 1em;
+        font-size: 1rem;
+    }
+
+    .services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .portfolio1, .portfolio2 {
+        flex-direction: column;
+    }
+
+    .process {
+        width: 100%;
+    }
+
+    .google-map-embed {
+        height: 400px;
+    }
+
+    .footer-logo img {
+        height: 60px;
+        width: 90px;
+    }
+
+    .footer-logo p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .about p {
+        font-size: 0.95rem;
+        margin-left: 1em;
+    }
+
+    .b {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .service {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .footer-logo {
+        font-size: 0.9rem;
+    }
+
+    .contact {
+        margin-left: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .about p {
+        font-size: 1rem;
+    }
+
+    .services {
+        flex-direction: column;
+        gap: 2em;
+    }
+
+    .service {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .portfolio1, .portfolio2 {
+        flex-direction: column;
+    }
+
+    .pro {
+        flex-direction: column;
+        gap: 2em;
+    }
+
+    .process {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .google-map-embed {
+        width: 100%;
+    }
+
+    .new_project h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about p {
+        font-size: 0.9rem;
+        margin-left: 1em;
+    }
+
+    .b {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .footer-logo {
+        font-size: 0.85rem;
+    }
+
+    .footer-logo img {
+        height: 50px;
+        width: 80px;
+    }
+
+    .contact {
+        margin-left: 2em;
+    }
+
+    .main {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about p {
+        font-size: 0.85rem;
+        margin-left: 1em;
+    }
+
+    .b {
+        padding: 12px;
+    }
+
+    .footer-logo {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        height: 50px;
+        width: 80px;
+    }
+
+    .service {
+        width: 100%;
+        margin-top: 10px;
+        padding: 15px;
+    }
+
+    .footer-logo p {
+        text-align: center;
+    }
+
+    .contact {
+        margin-left: 2em;
+    }
+
+    .map {
+        margin-top: 10px;
+    }
+
+    .google-map-embed {
+        height: 300px;
+    }
 }
